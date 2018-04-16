@@ -2,7 +2,7 @@
   <el-menu class="navbar" mode="horizontal">
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
     <breadcrumb></breadcrumb>
-    <el-dropdown class="avatar-container" trigger="click">
+    <!--<el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
         <i class="el-icon-caret-bottom"></i>
@@ -17,7 +17,8 @@
           <span @click="logout" style="display:block;">LogOut</span>
         </el-dropdown-item>
       </el-dropdown-menu>
-    </el-dropdown>
+    </el-dropdown>-->
+    <right-menu-bar></right-menu-bar>
   </el-menu>
 </template>
 
@@ -25,11 +26,13 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import rightMenuBar from '@/components/rightMenuBar'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    rightMenuBar
   },
   computed: {
     ...mapGetters([
@@ -52,12 +55,14 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
-  height: 50px;
-  line-height: 50px;
+  height: 64px;
+  line-height: 64px;
   border-radius: 0px !important;
+  position: relative;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   .hamburger-container {
-    line-height: 58px;
-    height: 50px;
+    line-height: 74px;
+    height: 64px;
     float: left;
     padding: 0 10px;
   }
@@ -68,7 +73,7 @@ export default {
     color: red;
   }
   .avatar-container {
-    height: 50px;
+    height: 64px;
     display: inline-block;
     position: absolute;
     right: 35px;

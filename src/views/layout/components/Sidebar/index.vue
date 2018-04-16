@@ -1,10 +1,10 @@
 <template>
   <scroll-bar>
-    <div :class="['topTitle',isCollapse?'small':'big']">
+    <div :class="['topTitle',isCollapse?'small':'big']" @click="backDash">
       <img :src="userLogo" alt="">
-      <a href="#/dashboard" v-if="!isCollapse">vue-admin</a>
+      <span v-if="!isCollapse">vue-admin</span>
     </div>
-    <el-menu mode="vertical" unique-opened :default-active="$route.path" :collapse="isCollapse" background-color="#304156" text-color="#fff" active-text-color="#409EFF">
+    <el-menu mode="vertical" unique-opened :default-active="$route.path" :collapse="isCollapse" background-color="#001529" text-color="#fff" active-text-color="#409EFF">
       <sidebar-item :routes="routes"></sidebar-item>
     </el-menu>
   </scroll-bar>
@@ -33,21 +33,28 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  methods: {
+    backDash() {
+      this.$router.push({ path: '/dashboard' })
+    }
   }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .topTitle{
-  height: 50px;
+  height: 64px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  background-color: #002140;
   &.big{
     padding-left: 18px;
   }
   &.small{
-    padding-left: 4px;
+    padding-left: 15px;
   }
-  a{
+  span{
     font-weight: bold;
     padding-left: 10px;
     color: white;
