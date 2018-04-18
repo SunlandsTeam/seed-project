@@ -2,23 +2,7 @@
   <el-menu class="navbar" mode="horizontal">
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
     <breadcrumb></breadcrumb>
-    <!--<el-dropdown class="avatar-container" trigger="click">
-      <div class="avatar-wrapper">
-        <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-        <i class="el-icon-caret-bottom"></i>
-      </div>
-      <el-dropdown-menu class="user-dropdown" slot="dropdown">
-        <router-link class="inlineBlock" to="/">
-          <el-dropdown-item>
-            Home
-          </el-dropdown-item>
-        </router-link>
-        <el-dropdown-item divided>
-          <span @click="logout" style="display:block;">LogOut</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>-->
-    <right-menu-bar></right-menu-bar>
+    <dropdown></dropdown>
   </el-menu>
 </template>
 
@@ -26,13 +10,13 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import rightMenuBar from '@/components/rightMenuBar'
+import Dropdown from '@/components/Dropdown'
 
 export default {
   components: {
     Breadcrumb,
     Hamburger,
-    rightMenuBar
+    Dropdown
   },
   computed: {
     ...mapGetters([
@@ -71,28 +55,6 @@ export default {
     right: 90px;
     top: 16px;
     color: red;
-  }
-  .avatar-container {
-    height: 64px;
-    display: inline-block;
-    position: absolute;
-    right: 35px;
-    .avatar-wrapper {
-      cursor: pointer;
-      margin-top: 5px;
-      position: relative;
-      .user-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-      }
-      .el-icon-caret-bottom {
-        position: absolute;
-        right: -20px;
-        top: 25px;
-        font-size: 12px;
-      }
-    }
   }
 }
 </style>

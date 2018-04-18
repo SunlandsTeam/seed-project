@@ -24,9 +24,7 @@ export default {
   },
   components: { SidebarItem, ScrollBar },
   computed: {
-    ...mapGetters([
-      'sidebar'
-    ]),
+    ...mapGetters(['sidebar']),
     routes() {
       return this.$router.options.routes
     },
@@ -42,25 +40,28 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-.topTitle{
+.topTitle {
   height: 64px;
   display: flex;
   align-items: center;
   cursor: pointer;
   background-color: #002140;
-  &.big{
+  &.big {
     padding-left: 18px;
   }
-  &.small{
+  &.small {
     padding-left: 15px;
   }
-  span{
+  span {
     font-weight: bold;
     padding-left: 10px;
     color: white;
     font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
-  img{
+  img {
     width: 25px;
     height: 25px;
     border-radius: 25px;
