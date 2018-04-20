@@ -18,11 +18,15 @@ import Layout from '../views/layout/Layout'
 * name:'router-name'             the name is used by <keep-alive> (must set!!!)
 * meta : {
     title: 'title'               the name show in submenu and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar,
+    icon: 'element-icon-name'    the icon show in the sidebar,
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
 
   {
@@ -31,10 +35,12 @@ export const constantRouterMap = [
     redirect: '/dashboard',
     name: 'Dashboard',
     hidden: true,
-    children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index')
+      }
+    ]
   },
 
   {
@@ -42,36 +48,28 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    meta: { title: 'Example', icon: 'el-icon-date' },
     children: [
       {
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: 'Table', icon: 'el-icon-picture-outline' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
+        meta: { title: 'Tree', icon: 'el-icon-edit-outline' }
+      },
       {
-        path: 'index',
+        path: 'form',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: 'Form', icon: 'el-icon-document' }
       }
     ]
   },
-
   { path: '*', redirect: '/404', hidden: true }
 ]
 
@@ -80,4 +78,3 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
-
